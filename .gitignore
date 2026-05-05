@@ -1,0 +1,31 @@
+# Ignore Python virtual environments
+venv/
+.venv/
+
+# Ignore photos/images (common folders)
+**/photos/
+**/photo/
+**/images/
+**/image/
+
+# Ignore dataset dumps / big data folder(s) (edit if needed)
+**/brain-hemorrhage-detection-1/
+
+# Ignore trained YOLO runs/checkpoints
+**/runs/
+**/outputs/
+**/models/
+
+# Ignore weight/checkpoint files
+*.pt
+*.pth
+*.onnx
+*.engine
+*.ckpt
+
+# Ignore checkpoints/logs
+*.log
+
+# Keep gitignore itself
+!.gitignore
+

@@ -1,0 +1,134 @@
+# Brain Hemorrhage Detection - YOLOv8 Project Configuration
+# BM 480 Deep Learning Course - Project 3
+
+project:
+  name: "BrainHemorrhage_YOLOv8"
+  version: "1.0.0"
+  description: "Brain hemorrhage detection using YOLOv8 on Roboflow dataset"
+  author: "Your Name"
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  data_splits: "data/splits"
+  outputs: "outputs"
+  outputs_models: "outputs/models"
+  outputs_figures: "outputs/figures"
+  outputs_label_gallery: "outputs/label_gallery"
+  outputs_error_analysis: "outputs/error_analysis"
+  outputs_ablation: "outputs/ablation"
+  outputs_reports: "outputs/reports"
+  baseline_model: "C:\\Users\\erhad\\OneDrive\\Desktop\\Arshad_UNI_Matrials\\Semister_8\\Deep_Learning\\project_3\\saved_models\\baseline_yolov8n_best.pt"
+  improved_model: "C:\\Users\\erhad\\OneDrive\\Desktop\\Arshad_UNI_Matrials\\Semister_8\\Deep_Learning\\project_3\\saved_models\\improved_yolov8s_best.pt"
+
+dataset:
+  name: "brain-hemorrhage-detection"
+  roboflow_workspace: "yolo-v5-h7oh7"
+  roboflow_project: "brain-hemorrhage-detection-8f8o0"
+  version: 1
+  format: "yolov8"
+  classes:
+    - "EDH"
+    - "IPH"
+    - "IVH"
+    - "SAH"
+    - "SDH"
+  num_classes: 5
+
+split:
+  train_ratio: 0.80
+  val_ratio: 0.10
+  test_ratio: 0.10
+  seed: 42
+  shuffle: true
+
+training:
+  baseline:
+    model: "yolov8n.pt"
+    epochs: 50
+    imgsz: 640
+    batch: 16
+    patience: 10
+    seed: 42
+    optimizer: "auto"
+    lr0: 0.01
+    lrf: 0.01
+    momentum: 0.937
+    weight_decay: 0.0005
+  ablation_a:
+    model: "yolov8n.pt"
+    epochs: 50
+    imgsz: 960
+    batch: 8
+    patience: 10
+    seed: 42
+    optimizer: "auto"
+
+# Device Configuration (GPU/CPU)
+device:
+  # Use GPU if available: "0" for first GPU, "0,1" for multiple, "cpu" to force CPU
+  # Set to "auto" to automatically detect and use GPU if available
+  default: "auto"
+
+  # Force specific device (uncomment to override auto-detection)
+  # "0" = first GPU, "1" = second GPU, "cpu" = CPU only
+  # force_device: "0"
+
+
+inference:
+  default_conf: 0.25
+  default_iou: 0.70
+  max_det: 300
+  conf_sweep:
+    - 0.001
+    - 0.01
+    - 0.05
+    - 0.1
+    - 0.2
+  nms_iou_values:
+    - 0.50
+    - 0.70
+
+visualization:
+  class_colors:
+    EDH: "#FF0000"
+    IPH: "#00FF00"
+    IVH: "#0000FF"
+    SAH: "#FFFF00"
+    SDH: "#FF00FF"
+  bbox_thickness: 3
+  font_size: 16
+  label_gallery:
+    num_samples: 20
+    grid_rows: 4
+    grid_cols: 5
+    figsize:
+      - 20
+      - 16
+    dpi: 150
+  error_analysis:
+    fp_count: 6
+    fn_count: 6
+    grid_rows: 2
+    grid_cols: 3
+    figsize:
+      - 18
+      - 12
+    dpi: 150
+
+gui:
+  tkinter:
+    window_title: "Brain Hemorrhage Detection - YOLOv8"
+    window_size: "1200x800"
+    theme: "light"
+  gradio:
+    title: "Brain Hemorrhage Detection System"
+    description: "BM 480 Deep Learning - Project 3"
+    theme: "soft"
+    share: false
+    server_port: 7860
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "outputs/training.log"

@@ -1,0 +1,15 @@
+# GUI-specific requirements for Brain Hemorrhage Detection Project
+# Install: pip install -r requirements-gui.txt
+
+# Include base requirements
+-r requirements.txt
+
+# =============================================================================
+# Web Interface (Gradio)
+# =============================================================================
+gradio>=4.0.0
+
+# =============================================================================
+# Optional: Better fonts for Windows
+# =============================================================================
+# No additional packages needed - uses system fonts

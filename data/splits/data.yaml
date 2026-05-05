@@ -1,0 +1,12 @@
+names:
+- EDH
+- IPH
+- IVH
+- SAH
+- SDH
+nc: 5
+path: C:\Users\erhad\OneDrive\Desktop\Arshad_UNI_Matrials\Semister_8\Deep_Learning\project_3\BrainHemorrhage_YOLOv8_Project
+  2\data\splits
+test: test/images
+train: train/images
+val: val/images

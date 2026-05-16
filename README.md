@@ -85,7 +85,7 @@ paths:
 ### 4. Run Full Pipeline
 ```bash
 # Download dataset, prepare, train, evaluate
-python scripts/run_pipeline.py --api-key YOUR_ROBOFLOW_API_KEY
+python scripts/run_pipeline.py --api-key zyV3K3gkGtguGRLG9Uvw
 ```
 
 ### 5. Launch GUI

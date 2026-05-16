@@ -5,7 +5,7 @@ project:
   name: "BrainHemorrhage_YOLOv8"
   version: "1.0.0"
   description: "Brain hemorrhage detection using YOLOv8 on Roboflow dataset"
-  author: "Your Name"
+  author: "Arshad Qurishy"
 
 paths:
   data_raw: "data/raw"
